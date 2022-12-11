@@ -271,9 +271,11 @@
             // $("#member").append(imgContainer);
             // $("#member").append(description);
             // convertChart("chart" + i, member.status);
-            $("#one").html("");
-            $("#one").append(memberName);
-            $("#one").append(description);
+
+            var content = $("#one .content");
+            content.html("");
+            content.append(memberName);
+            content.append(description);
           }
         },
       });
