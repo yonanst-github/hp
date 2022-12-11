@@ -249,10 +249,10 @@
               two = getRandomIdx();
             }
 
-            $("#one .content h2").text(members[one].name);
-            $("#one .content p").text(members[one].description);
-            $("#two .content h2").text(members[two].name);
-            $("#two .content p").text(members[two].description);
+            $("#one .content h2").html(members[one].name);
+            $("#one .content p").html(members[one].description);
+            $("#two .content h2").html(members[two].name);
+            $("#two .content p").html(members[two].description);
           };
           showMember();
 
