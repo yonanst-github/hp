@@ -245,38 +245,61 @@
         success: function (data, dataType) {
           var members = data.members;
 
-          var shuffle = function () {
-            return Math.random() - 0.5;
+          //   var shuffle = function () {
+          //     return Math.random() - 0.5;
+          //   };
+          //   members.sort(shuffle);
+
+          var min = 0;
+          var max = members.length - 1;
+          var getRandomIdx = function () {
+            return Math.floor(Math.random() * (max + 1 - min)) + min;
           };
-          members.sort(shuffle);
 
-          for (var i = 0, l = members.length; i < l; i++) {
-            var member = members[i];
+          var showMember = function () {
+            var one = getRandomIdx();
+            var two = getRandomIdx();
+            while (one === two) {
+              two = getRandomIdx();
+            }
 
-            var memberName = $("<h2 class='major'>" + member.name + "</h2>");
-            // var imgContainer = $("<div class='image main'></div>");
-            // var memberImg = $("<img src='" + member.img + "' />");
-            // var memberStatus = $(
-            //   "<div class='rader_container'><canvas id='chart" +
-            //     i +
-            //     "'></canvas></div>"
-            // );
-            // imgContainer.append(memberName);
-            // imgContainer.append(memberImg);
-            // imgContainer.append(memberStatus);
+            var content1 = $("#one .content");
+            content1.html("");
+            content1.append(
+              "<h2 class='major' style='text-align:left'>" +
+                members[one].name +
+                "</h2>"
+            );
+            content1.append(
+              "<p style='text-align:left'>" + members[one].description + "</p>"
+            );
 
-            var description = $("<p></p>");
-            description.html(member.description);
+            var content2 = $("#two .content");
+            content2.html("");
+            content2.append(
+              "<h2 class='major' style='text-align:left'>" +
+                members[two].name +
+                "</h2>"
+            );
+            content2.append(
+              "<p style='text-align:left'>" + members[two].description + "</p>"
+            );
+          };
+          showMember();
 
-            // $("#member").append(imgContainer);
-            // $("#member").append(description);
-            // convertChart("chart" + i, member.status);
-
-            var content = $("#one .content");
-            content.html("");
-            content.append(memberName);
-            content.append(description);
-          }
+          setInterval(function () {
+            $("#one .content h2").fadeOut(3000);
+            $("#one .content p").fadeOut(3000);
+            $("#two .content h2").fadeOut(3000);
+            $("#two .content p").fadeOut(3000);
+            setTimeout(function () {
+              showMember();
+              $("#one .content h2").fedeIn(3000);
+              $("#one .content p").fedeIn(3000);
+              $("#two .content h2").fedeIn(3000);
+              $("#two .content p").fedeIn(3000);
+            }, 3000);
+          }, 8000);
         },
       });
     </script>
