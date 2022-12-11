@@ -61,15 +61,8 @@
           <div class="inner">
             <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
             <div class="content">
-              <h2 class="major">Magna arcu feugiat</h2>
-              <p>
-                Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras
-                turpis ante, nullam sit amet turpis non, sollicitudin posuere
-                urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim
-                dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla
-                cursus.
-              </p>
-              <a href="#" class="special">Learn more</a>
+              <h2 class="major" style="text-align: left"></h2>
+              <p style="text-align: left"></p>
             </div>
           </div>
         </section>
@@ -79,15 +72,8 @@
           <div class="inner">
             <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
             <div class="content">
-              <h2 class="major">Tempus adipiscing</h2>
-              <p>
-                Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras
-                turpis ante, nullam sit amet turpis non, sollicitudin posuere
-                urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim
-                dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla
-                cursus.
-              </p>
-              <a href="#" class="special">Learn more</a>
+              <h2 class="major" style="text-align: left"></h2>
+              <p style="text-align: left"></p>
             </div>
           </div>
         </section>
@@ -263,43 +249,27 @@
               two = getRandomIdx();
             }
 
-            var content1 = $("#one .content");
-            content1.html("");
-            content1.append(
-              "<h2 class='major' style='text-align:left'>" +
-                members[one].name +
-                "</h2>"
-            );
-            content1.append(
-              "<p style='text-align:left'>" + members[one].description + "</p>"
-            );
-
-            var content2 = $("#two .content");
-            content2.html("");
-            content2.append(
-              "<h2 class='major' style='text-align:left'>" +
-                members[two].name +
-                "</h2>"
-            );
-            content2.append(
-              "<p style='text-align:left'>" + members[two].description + "</p>"
-            );
+            $("#one .content h2").text(members[one].name);
+            $("#one .content p").text(members[one].description);
+            $("#two .content h2").text(members[two].name);
+            $("#two .content p").text(members[two].description);
           };
           showMember();
 
           setInterval(function () {
-            $("#one .content h2").fadeOut(3000);
-            $("#one .content p").fadeOut(3000);
-            $("#two .content h2").fadeOut(3000);
-            $("#two .content p").fadeOut(3000);
+            var count = 2000;
+            $("#one .content h2").fadeOut(count);
+            $("#one .content p").fadeOut(count);
+            $("#two .content h2").fadeOut(count);
+            $("#two .content p").fadeOut(count);
             setTimeout(function () {
               showMember();
-              $("#one .content h2").fedeIn(3000);
-              $("#one .content p").fedeIn(3000);
-              $("#two .content h2").fedeIn(3000);
-              $("#two .content p").fedeIn(3000);
-            }, 3000);
-          }, 8000);
+              $("#one .content h2").fadeIn(count);
+              $("#one .content p").fadeIn(count);
+              $("#two .content h2").fadeIn(count);
+              $("#two .content p").fadeIn(count);
+            }, count);
+          }, 6000);
         },
       });
     </script>
